@@ -31,11 +31,12 @@ var amountPay = document.getElementById('amount').value
 var receiptName = document.getElementById('name').value + document.getElementById('number').value
   document.getElementById('rzp-button1').onclick = function(e){
             fetch('https://6ecvq4hmm7.execute-api.us-east-1.amazonaws.com/Stage0/',{
+              credentials: 'include',
               body: "Hello, world!",
                method: 'POST',
                 mode: 'cors',
                 headers: {
-                  'Access-Control-Allow-Origin': '*',
+                  'Access-Control-Allow-Origin': 'https://bajrangi18.github.io',
                   'Access-Control-Allow-Headers': 'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token',
                   'Access-Control-Allow-Methods': '*',
                   'x-api-key': "DenDrDSY1x5xspx8EFmxi13f15wPjBpIaWDN3OFx",
