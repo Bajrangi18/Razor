@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HTML 5 Boilerplate</title>
+  </head>
+  <style>
+    body {
+      background-color: lightblue;
+    }
+  </style>
+  <body><center>
+    <label for="am">Amount</label>
+    <input type="text" name="am" value="" id="amount"><br>
+    <label for="nm">Name</label>
+    <input type="text" name="nm" value="" id="name"><br>
+    <label for="num">Phone Number</label>
+    <input type="text" name="num" value="" id="number" ><br><br>
+    <button type="button" id="rzp-button1">Pay</button>
+  </center>
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <script>
+
+let key_id = "rzp_test_kjFGJoeE1KSP2U"
+let passkey = "n8BwLhzJHIr1yniuh4LwyhKt"
+let urlStr = 'http://127.0.0.1:8080/'
+var amountPay = document.getElementById('amount').value
+var receiptName = document.getElementById('name').value + document.getElementById('number').value
+  document.getElementById('rzp-button1').onclick = function(e){
+            fetch('https://6ecvq4hmm7.execute-api.us-east-1.amazonaws.com/Stage0/',{
+              body: "Hello, world!",
+               method: 'POST',
+                mode: 'cors',
+                headers: {
+                  'Access-Control-Allow-Origin': '*',
+                  'Access-Control-Allow-Headers': 'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token',
+                  'Access-Control-Allow-Methods': '*',
+                  'x-api-key': "DenDrDSY1x5xspx8EFmxi13f15wPjBpIaWDN3OFx",
+                  'amount' : amountPay,
+                  'receipt' : receiptName
+                }
+            })
+            .then((response) => response.json())
+            .then((data) => {
+              console.log('Success:', data);
+            })
+
+
+        // var options = {
+        //     "key": "rzp_test_EGFpQYZ0EwEH0F", // Enter the Key ID generated from the Dashboard
+        //     "amount": "500", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+        //     "currency": "INR",
+        //     "name": "Acme Corp",
+        //     "description": "Test Transaction",
+        //     "image": "https://example.com/your_logo",
+        //     "order_id": "order_Kdd3OIvVELnN3U", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+        //     "callback_url": "https://eneqd3r9zrjok.x.pipedream.net/",
+        //     "prefill": {
+        //         "name": "Gaurav Kumar",
+        //         "email": "gaurav.kumar@example.com",
+        //         "contact": "9999999999"
+        //     },
+        //     "notes": {
+        //         "address": "Razorpay Corporate Office"
+        //     },
+        //     "theme": {
+        //         "color": "#3399cc"
+        //     }
+        // };
+        // var rzp1 = new Razorpay(options);
+
+      //
+      // rzp1.open();
+      // e.preventDefault();
+      // console.log(response.razorpay_payment_id)
+      // console.log(response.razorpay_signature)
+      // console.log(response.razorpay_order_id)
+    //   rzp1.on('payment.failed', function (response){
+    //     alert(response.error.code);
+    //     alert(response.error.description);
+    //     alert(response.error.source);
+    //     alert(response.error.step);
+    //     alert(response.error.reason);
+    //     alert(response.error.metadata.order_id);
+    //     alert(response.error.metadata.payment_id);
+    // })
+  }
+
+
+  </script>
+  </body>
+</html>
